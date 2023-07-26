@@ -1,0 +1,67 @@
+@use "../../styles/variables.scss" as var;
+
+.container {
+  background-color: var.$color-black;
+  width: 100%;
+  height: 91px;
+  box-shadow: var.$shadow-nav;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+
+  svg {
+    width: 200px;
+    color: var.$color-red;
+    min-width: 100px;
+  }
+
+  ul {
+    width: 70%;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-around;
+
+    li {
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 24px;
+      color: #fff;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      a.active {
+        background-color: var.$color-red;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 798px) {
+  .container {
+    width: 100%;
+    gap: 10px;
+
+    svg {
+      width: 100px;
+    }
+
+    ul {
+      width: 80%;
+      gap: 10px;
+
+      li {
+        font-size: 17px;
+      }
+    }
+  }
+}

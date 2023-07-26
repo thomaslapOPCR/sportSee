@@ -1,0 +1,46 @@
+@use "../../styles/variables.scss" as var;
+
+.container {
+  width: 80%;
+  height: 50%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  h1 {
+    font-size: 40px;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 5px;
+    background: #282d30;
+    padding: 20px;
+    color: var.$color-white;
+  }
+
+  .buttonContainer {
+    display: flex;
+    gap: 40px;
+  }
+
+  a {
+    background-color: var.$color-backgound-components;
+    box-shadow: var.$shadow-components;
+    collapse: var.$color-black;
+    padding: 20px 40px;
+    border-radius: 8px;
+    color: var.$color-black;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      background-color: darken(var.$color-backgound-components, 10%);
+      transition: background-color 0.4s;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@use "../../styles/variables.scss" as var;
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 500px;
+  height: 500px;
+
+  h1 {
+    font-size: 220px;
+    margin: 0;
+    color: var.$color-red
+  }
+
+  p {
+    font-size: 25px;
+    font-weight: 700;
+  }
+
+  a {
+    color: var.$color-white;
+    background-color: var.$color-red;
+    padding: 20px 30px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    box-shadow: var.$shadow-components;
+    border-radius: 10px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+
+}

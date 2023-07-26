@@ -1,0 +1,41 @@
+@use "../../styles/variables.scss" as var;
+
+.container {
+  width: 117px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: var.$color-black;
+
+  .svgContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  svg {
+    cursor: pointer;
+  }
+
+  svg:hover {
+    rect {
+      fill: var.$color-red;
+      transition: fill 0.2s;
+    }
+
+    path {
+      fill: var.$color-white;
+      transition: fill 0.2s;
+    }
+  }
+
+  p {
+    color: var.$color-white;
+    transform: rotate(-90deg);
+    width: 200px;
+    padding-left: 40px;
+  }
+}
