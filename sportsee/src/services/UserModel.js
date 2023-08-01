@@ -4,28 +4,33 @@ export default class UserDataModel {
   }
 
   getUserMainDataById() {
-    return this.data.USER_MAIN_DATA
+    return this.data.USER_MAIN_DATA[0];
   }
 
   getUserActivityById() {
-    return this.data.USER_ACTIVITY
+    return this.data.USER_ACTIVITY[0].sessions;
   }
 
   getUserAverageSessionsById() {
-    return this.data.USER_AVERAGE_SESSIONS
+    return this.data.USER_AVERAGE_SESSIONS[0].sessions;
   }
 
   getUserPerformanceById() {
-    return this.data.USER_PERFORMANCE
+    return this.data.USER_PERFORMANCE[0];
   }
 
-  getUserDataById() {
+  getUser() {
     const userMainData = this.getUserMainDataById();
     const userActivity = this.getUserActivityById();
     const userAverageSessions = this.getUserAverageSessionsById();
     const userPerformance = this.getUserPerformanceById();
 
-    if (!userMainData || !userActivity || !userAverageSessions || !userPerformance) {
+    if (
+      !userMainData ||
+            !userActivity ||
+            !userAverageSessions ||
+            !userPerformance
+    ) {
       return null; // User data not found
     }
 
@@ -35,12 +40,12 @@ export default class UserDataModel {
         todayScore: userMainData.todayScore,
         keyData: userMainData.keyData,
       },
-      userActivity: userActivity.sessions,
-      userAverageSessions: userAverageSessions.sessions,
+      userActivity: userActivity,
+      userAverageSessions: userAverageSessions,
       userPerformance: {
         data: userPerformance.data,
-        kind: userPerformance.kind
-      }
+        kind: userPerformance.kind,
+      },
     };
   }
 }
