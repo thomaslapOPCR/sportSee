@@ -1,0 +1,27 @@
+@use "../../styles/variables.scss" as var;
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+    height: 200px;
+}
+.test {
+    width: 80px;
+    fill: var.$color-red;
+    animation: rotate 3s linear infinite;
+}
+
+.text {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate( 360deg);
+    }
+}

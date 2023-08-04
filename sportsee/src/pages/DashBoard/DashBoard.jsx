@@ -1,29 +1,43 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
+import { Navigate, useParams } from "react-router-dom";
 import getUserData from "../../services/UserRequest.js";
+import Loading from "../../components/Loading/Loading.jsx";
+import Activity from "../../components/Activity/Activity.jsx";
 
-const DashBoard = () => {
-  const [userData, setUserData] = useState(0);
+const Dashboard = () => {
+  const { id } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    async function fetchData() {
       try {
-        const userData = await getUserData(12);
-        console.log(userData)
-        setUserData(userData);
+        const data = await getUserData(parseInt(id));
+        console.log(data)
+        setUserData(data);
+        setIsLoading(false);
       } catch (error) {
-        console.error("Error fetching user data:", error.message);
+        setError(true);
       }
-    };
+    }
 
     fetchData();
-  }, []);
+  }, [id]);
 
-  // if (!userData) {
-  //
-  //   return <p>Chargement en cours...</p>;
-  // }
+  if (error) {
+    return <Navigate to="/error" replace={true} />;
+  }
 
-  return <>{userData}</>;
+  if (isLoading) {
+    return <Loading />;
+  }
+  console.log(userData.activity.sessions)
+  return (
+    <>
+      <Activity data={userData.activity.sessions} />
+    </>
+  );
 };
 
-export default DashBoard;
+export default Dashboard;

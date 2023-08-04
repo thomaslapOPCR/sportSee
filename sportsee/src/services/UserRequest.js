@@ -1,35 +1,57 @@
-const axios = require("axios");
-import UserDataModel from "./UserModel.js";
+// userDataRetriever.js
+
+import UserDataModel from "../services/UserModel.js";
+import axios from "axios";
 import data from "../data/MockDataAPI.js";
 
-export default async function getUserData(userId) {
-  let useMockData = true;
-  if (useMockData) {
+const isUsingMockData = true; // Change to false if you want to use Axios API
+
+async function getUserData(userId) {
+  let userData = null;
+
+  if (isUsingMockData) {
     const userModel = new UserDataModel(data);
-    return userModel.getUser();
+    userData = userModel.getUserMainData(userId);
+    userData.activity = userModel.getUserActivity(userId);
+    userData.averageSessions = userModel.getUserAverageSessions(userId);
+    userData.performance = userModel.getUserPerformance(userId);
+    if (userData === undefined) return;
+    return userData;
   } else {
-    try {
-      const [userMainData, userActivity, userAverageSessions, userPerformance] =
-                await Promise.all([
-                  axios.get(`http://localhost:3000/user/${userId}`),
-                  axios.get(`http://localhost:3000/user/${userId}/activity`),
-                  axios.get(`http://localhost:3000/user/${userId}/average-sessions`),
-                  axios.get(`http://localhost:3000/user/${userId}/performance`),
-                ]);
+    const port = 4200;
 
-      const userData = {
-        USER_MAIN_DATA: [userMainData.data],
-        USER_ACTIVITY: [userActivity.data],
-        USER_AVERAGE_SESSIONS: [userAverageSessions.data],
-        USER_PERFORMANCE: [userPerformance.data],
-      };
+    const mainDataPromise = axios.get(
+      `http://localhost:${port}/user/${userId}`,
+    );
+    const activityPromise = axios.get(
+      `http://localhost:${port}/user/${userId}/activity`,
+    );
+    const averageSessionsPromise = axios.get(
+      `http://localhost:${port}/user/${userId}/average-sessions`,
+    );
+    const performancePromise = axios.get(
+      `http://localhost:${port}/user/${userId}/performance`,
+    );
 
-      const userDataModel = new UserDataModel(userData);
+    const [
+      mainDataResponse,
+      activityResponse,
+      averageSessionsResponse,
+      performanceResponse,
+    ] = await Promise.all([
+      mainDataPromise,
+      activityPromise,
+      averageSessionsPromise,
+      performancePromise,
+    ]);
 
-      return userDataModel.getUser();
-    } catch (error) {
-      console.error("Error fetching user data:", error.message);
-      throw error;
-    }
+    userData = mainDataResponse.data.data;
+    userData.activity = activityResponse.data.data;
+    userData.averageSessions = averageSessionsResponse.data.data;
+    userData.performance = performanceResponse.data.data;
   }
+
+  return userData;
 }
+
+export default getUserData;
