@@ -14,7 +14,6 @@ const Dashboard = () => {
     async function fetchData() {
       try {
         const data = await getUserData(parseInt(id));
-        console.log(data)
         setUserData(data);
         setIsLoading(false);
       } catch (error) {
@@ -32,10 +31,10 @@ const Dashboard = () => {
   if (isLoading) {
     return <Loading />;
   }
-  console.log(userData.activity.sessions)
+  console.log(userData)
   return (
     <>
-      <Activity data={userData.activity.sessions} />
+      <Activity data={userData.activity} />
     </>
   );
 };

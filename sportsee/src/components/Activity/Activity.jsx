@@ -53,17 +53,17 @@ export default function Weight({ data }) {
             left: 50,
             bottom: 10,
           }}
-          //Espacement entre des bars de catégories diférentes 
+
           barCategoryGap="40%"
-          //L'écart entre deux barres de la même catégorie
+
           barGap={1}
           data={data}
         >
           <CartesianGrid
-            //point horizontale de la grid
+
             strokeDasharray="2 4"
             vertical={false}
-            //couleur des traits
+
             stroke="#dedede"
           />
           <XAxis
@@ -85,7 +85,7 @@ export default function Weight({ data }) {
             tickSize="50"
             tickCount={4}
           />
-          {/* fond du fiagram lors du survol */}
+
           <Tooltip
             position={{ y: 0 }}
             cursor={{
