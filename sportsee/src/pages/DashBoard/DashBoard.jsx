@@ -3,6 +3,9 @@ import { Navigate, useParams } from "react-router-dom";
 import getUserData from "../../services/UserRequest.js";
 import Loading from "../../components/Loading/Loading.jsx";
 import Activity from "../../components/Activity/Activity.jsx";
+import UserInfos from "../../components/UserInfos/UserInfos.jsx";
+import style from "./Dashboard.module.scss";
+import UserStats from "../../data/Userdata.json";
 
 const Dashboard = () => {
   const { id } = useParams();
@@ -31,11 +34,25 @@ const Dashboard = () => {
   if (isLoading) {
     return <Loading />;
   }
-  console.log(userData)
+
   return (
-    <>
-      <Activity data={userData.activity} />
-    </>
+    <section style={style.container}>
+      <section>
+        <h1>Bonjour {}</h1>
+        <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+      </section>
+      <section>
+        <article>
+          <Activity data={userData.activity}></Activity>
+          <div></div>
+        </article>
+        <article>
+          {UserStats.map((item, index) => (
+            <UserInfos Userdata={item} data={"180g"} key={index} />
+          ))}
+        </article>
+      </section>
+    </section>
   );
 };
 
