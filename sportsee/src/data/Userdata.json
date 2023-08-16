@@ -1,22 +1,22 @@
 [
   {
     "title": "Calories",
-    "icon": "../../assets/calories-icon.svg",
+    "icon": "./calories-icon.svg",
     "color": "#fbeaea"
   },
   {
     "title": "Proteines",
-    "icon": "../../assets/protein-icon.svg",
+    "icon": "protein-icon.svg",
     "color": "#E9F4FB"
   },
   {
     "title": "Glucides",
-    "icon": "../../assets/crabs-icon.svg",
+    "icon": "crabs-icon.svg",
     "color": "#fbf6e5"
   },
   {
     "title": "Lipides",
-    "icon": "../../assets/fat-icon.svg",
+    "icon": "fat-icon.svg",
     "color": "#fbeaef"
   }
 ]

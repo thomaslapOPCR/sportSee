@@ -6,39 +6,40 @@ import { NavLink } from "react-router-dom";
 const Navigation = () => {
   return (
     <div className={style.container}>
-      <Logo />
+      <Logo /> {/* Rendering the Logo component */}
 
       <ul>
+        {/* Navigation links using NavLink components */}
         <li>
           <NavLink
-            className={({ isActive }) => (isActive ? style.active : "")}
-            to={"/"}
+            className={({ isActive }) => (isActive ? style.active : "")} // Applying 'active' class for active links
+            to={"/"} // Link to the home page
           >
-            Accueil
+            Accueil {/* Link text */}
           </NavLink>
         </li>
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? style.active : "")}
-            to={"/user"}
+            to={"/user"} // Link to the user profile page
           >
-            Profil
+            Profil {/* Link text */}
           </NavLink>
         </li>
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? style.active : "")}
-            to={"/settings"}
+            to={"/settings"} // Link to the settings page
           >
-            Réglage
+            Réglage {/* Link text */}
           </NavLink>
         </li>
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? style.active : "")}
-            to={"/community"}
+            to={"/community"} // Link to the community page
           >
-            Communauté
+            Communauté {/* Link text */}
           </NavLink>
         </li>
       </ul>
