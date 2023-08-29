@@ -1,9 +1,21 @@
+/**
+ * @import {Library} React - The React library.
+ * @import {Component} Link - The Link component from react-router-dom.
+ * @import {Module} style - The module for styling the Home component.
+ */
+
 import React from "react";
 import { Link } from "react-router-dom";
 import style from "./Home.module.scss";
-
+/**
+ * The Home page component.
+ *
+ * @component
+ * @returns {JSX.Element}
+ */
 const Home = () => {
   return (
+    /** Renders the main content of the Home page */
     <div className={style.container}>
       <h1>Selection</h1>
       <p>

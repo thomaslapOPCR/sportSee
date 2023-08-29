@@ -17,11 +17,5 @@ export const translateName = (data) => {
 };
 
 export default {
-  /**
-   * Translates a given data value to its corresponding translated string.
-   * @function
-   * @param {string} data - The data value to be translated.
-   * @returns {string} The translated value, or an empty string if no translation exists.
-   */
   translateName,
 };

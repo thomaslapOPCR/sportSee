@@ -1,17 +1,46 @@
+/**
+ * @import {Component} Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip - Components from Recharts library.
+ * @import {Module} style - The module for styling the Performance component.
+ * @import {Function} translateName - The translateName function from the Utils module.
+ */
 import React from "react";
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip } from "recharts";
+import PropTypes from "prop-types";
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
 import style from "./Performance.module.scss";
 import { translateName } from "../../services/Utils.js";
 
-// Performance component that displays a radar chart to visualize performance data.
+/**
+ * Performance component that displays a radar chart to visualize performance data.
+ *
+ * @component
+ * @param {Object} props - The component's props.
+ * @param {Object[]} props.data - Performance data to visualize.
+ * @param {string} props.kind - The kind of performance data being displayed.
+ * @returns {JSX.Element}
+ */
 const Performance = ({ data, kind }) => {
-  // Mapping and transforming data items to include translated names based on the kind.
+  /**
+   * Mapping and transforming data items to include translated names based on the kind.
+   *
+   * @type {Object[]}
+   */
   const userdata = data.map((item) => ({
     ...item,
     name: translateName(kind[item.kind]), // Assuming there is a 'translateName' function
   }));
 
-  // Reordering data items to change the order of categories.
+  /**
+   * Reordering data items to change the order of categories.
+   *
+   * @type {Object[]}
+   */
   const reorderedData = [...userdata].reverse();
 
   return (
@@ -38,6 +67,12 @@ const Performance = ({ data, kind }) => {
       </ResponsiveContainer>
     </section>
   );
+};
+
+// Prop type validation for the Performance component
+Performance.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  kind: PropTypes.object.isRequired,
 };
 
 export default Performance;

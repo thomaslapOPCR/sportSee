@@ -1,30 +1,32 @@
 # SportSee
 
 
-# 1. Backend
-1.1 Prerequisites
+Backend
 
-    NodeJS v19.5.0.
-    Yarn v3.5.0.
+clone this repo https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
+npm install
 
-1.2 Launching the project
+to install the backend
+npm start
 
-In the backend folder /sportsee/server :
+to run the backend.
 
-    Install the dependencies with the yarn command.
-    Run the API with the yarn dev command or npm run start.
 
 # 2. Frontend
-2.1 Prerequisites
+Frontend
 
-    React v18.2.0.
-    Recharts v2.5.0.
-    Axios v1.3.4.
-    npm v9.3.1.
+clone this repo https://github.com/thomaslapOPCR/sportSee.git
+npm install
 
-2.2 Lauching the project
+to install the frontend
+npm start
 
-In the frontend folder sportsee/sportsee :
+to run the frontend.
 
-    Install the dependencies with the npm install command.
-    Run the app with the npm run start command.
+JS Doc
+
+JSDoc is available in jsdoc directory. Launch index.html (located in jsdoc directory) to vizualize the code documentation.
+
+MOCK / API Configuration switch
+
+A boolean named 'MOCKED_DATA' is defined in /src/utils/api.jsx. If set to true, mocked data is chosen, if set to false, API data is chosen. Note the current value is displayed in Home page, bottom right of screen.
