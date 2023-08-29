@@ -68,3 +68,39 @@
     }
   }
 }
+
+
+@media screen and (max-width: 1080px) {
+  .container {
+    margin: 0;
+
+    .graph {
+      flex-direction: column;
+      justify-content: normal !important;
+    }
+
+    .graphContainer section {
+      width:  28vw;
+      height:  28vw;
+   }
+    article:nth-child(1){
+      width: 100% !important;
+    }
+
+    article:nth-child(2) {
+      flex-direction: row !important;
+      gap: 15px;
+      justify-content: space-evenly;
+      flex-wrap: wrap !important;
+      height: 12% !important;
+      width: 100% !important;
+      margin-top: 20px;
+      div {
+        flex-direction: column;
+        width: max-content;
+        gap: 10px;
+      }
+    }
+  }
+}
+
